@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="2409106040_MuhammadRafliPernanda_A2'24_posttest4"/>
+        <attribute name="authors" value="Pernanda"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-09-30 04:07:55 PM"/>
+        <attribute name="created" value="TEVOT1ZPO0xBUFRPUC1LSFU3TEgzTjsyMDI0LTA5LTMwOzA5OjMwOjQyIEFNOzI4MDc="/>
+        <attribute name="edited" value="TEVOT1ZPO0xBUFRPUC1LSFU3TEgzTjsyMDI0LTA5LTMwOzA0OjA3OjU1IFBNOzg7Mjk0MA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="Nama, Username, NamaLengkap" type="String" array="False" size=""/>
+            <declare name="NIM, TotalPinjaman, TotalBulan, LamaCicilan, CicilanBulanan, BungaBulanan, PercobaanLogin, Password, Pengulangan, PW" type="Integer" array="False" size=""/>
+            <declare name="BungaTahunan" type="Real" array="False" size=""/>
+            <assign variable="Username" expression="&quot;pernanda&quot;"/>
+            <assign variable="Password" expression="40"/>
+            <output expression="&quot;Silahkan Login Dengan Username Nama Anda dan Password 3 Digit Terakhir NIM Anda&quot;" newline="True"/>
+            <output expression="&quot;Masukkan Username Anda&quot;" newline="True"/>
+            <input variable="Nama"/>
+            <output expression="&quot;Masukkan Password Anda&quot;" newline="True"/>
+            <input variable="PW"/>
+            <assign variable="PercobaanLogin" expression="0"/>
+            <assign variable="Pengulangan" expression="1"/>
+            <while expression="not (Nama == Username and PW == Password)">
+                <assign variable="PercobaanLogin" expression="PercobaanLogin + 1"/>
+                <if expression="PercobaanLogin=3">
+                    <then>
+                        <assign variable="Nama" expression="Username"/>
+                        <assign variable="PW" expression="Password"/>
+                        <assign variable="Pengulangan" expression="2"/>
+                        <output expression="&quot;Percobaan Login Maksimal 3x, Silahkan Coba Lagi Nanti&quot;" newline="True"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Username atau Password Anda Salah, Masukkan Username atau Password yang Benar&quot;" newline="True"/>
+                        <output expression="&quot;Silahkan Login Dengan Username Nama Anda dan Password 3 Digit Terakhir NIM Anda&quot;" newline="True"/>
+                        <output expression="&quot;Masukkan Username Anda&quot;" newline="True"/>
+                        <input variable="Nama"/>
+                        <output expression="&quot;Masukkan Password Anda&quot;" newline="True"/>
+                        <input variable="PW"/>
+                    </else>
+                </if>
+            </while>
+            <while expression="Pengulangan == 1">
+                <output expression="&quot;***Anda Berhasil Login, Silahkan Masukkan Data Anda***&quot;" newline="True"/>
+                <output expression="&quot;Masukkan Nama Lengkap Anda&quot;" newline="True"/>
+                <input variable="NamaLengkap"/>
+                <output expression="&quot;Masukkan NIM Anda&quot;" newline="True"/>
+                <input variable="NIM"/>
+                <output expression="&quot;Masukkan Jumlah Pinjaman Anda&quot;" newline="True"/>
+                <input variable="TotalPinjaman"/>
+                <output expression="&quot;Masukkan Lama Waktu Cicilan&quot;" newline="True"/>
+                <input variable="LamaCicilan"/>
+                <assign variable="TotalBulan" expression="LamaCicilan * 12"/>
+                <if expression="LamaCicilan == 1">
+                    <then>
+                        <assign variable="BungaTahunan" expression="0.07"/>
+                    </then>
+                    <else>
+                        <if expression="LamaCicilan == 2">
+                            <then>
+                                <assign variable="BungaTahunan" expression="0.13"/>
+                            </then>
+                            <else>
+                                <if expression="LamaCicilan == 3">
+                                    <then>
+                                        <assign variable="BungaTahunan" expression="0.19"/>
+                                    </then>
+                                    <else>
+                                        <output expression="&quot;Maaf Anda Tidak Memiliki Pinjaman dalam Rentang Waktu 1-3 tahun&quot;" newline="True"/>
+                                        <assign variable="Pengulangan" expression="2"/>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <if expression="Pengulangan == 1">
+                    <then>
+                        <assign variable="BungaBulanan" expression="BungaTahunan / 12 * TotalPinjaman"/>
+                        <assign variable="CicilanBulanan" expression="(TotalPinjaman + BungaBulanan) / TotalBulan"/>
+                        <output expression="NamaLengkap &amp; &quot; dengan NIM &quot; &amp; NIM &amp; &quot;, Bunga Perbulanmu adalah Rp.&quot; &amp; BungaBulanan &amp; &quot; dan Cicilan yang Harus Dibayar Perbulan Adalah Rp.&quot; &amp; CicilanBulanan" newline="True"/>
+                    </then>
+                    <else/>
+                </if>
+                <output expression="&quot;Apakah Anda Ingin Mengulang Program?&quot;&#13;&#10;&amp;&#13;&#10;&quot; Ketik 1 Untuk Mengulang dan 2 Untuk Berhenti&quot;" newline="True"/>
+                <input variable="Pengulangan"/>
+            </while>
+            <output expression="&quot;Program Berhenti&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
