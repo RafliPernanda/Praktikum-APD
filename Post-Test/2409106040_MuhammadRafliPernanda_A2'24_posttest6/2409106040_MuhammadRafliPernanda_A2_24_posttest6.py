@@ -168,7 +168,6 @@ while True:
                             pendaftaran[inputUsername] = {"nama_peserta": nama_peserta, "lomba": lomba, "kategori": kategori}
                             print(f"{pendaftaran[inputUsername]['nama_peserta']} telah mendaftar lomba {pendaftaran[inputUsername]['lomba']} dengan kategori {pendaftaran[inputUsername]['kategori']}.")
 
-
                     # Lihat Pendaftaran Lomba
                     elif pilihan_pengguna == "2":
                         # Cek apakah pengguna sudah mendaftar
@@ -177,7 +176,6 @@ while True:
                             print(f"Anda belum melakukan pendaftaran.")
                         else:
                             print(f"{pendaftaran[inputUsername]['nama_peserta']} telah mendaftar lomba {pendaftaran[inputUsername]['lomba']} dengan kategori {pendaftaran[inputUsername]['kategori']}.")
-
 
                     # Mengedit Pendaftaran Lomba
                     elif pilihan_pengguna == "3":
@@ -234,7 +232,6 @@ while True:
                         else:
                             print("Anda belum mendaftar lomba.")
 
-
                     # Batalkan Pendaftaran
                     elif pilihan_pengguna == "4":
                         if inputUsername in pendaftaran:
@@ -242,7 +239,6 @@ while True:
                             print("Pendaftaran berhasil dibatalkan.")
                         else:
                             print("Anda belum mendaftar lomba.")
-
 
                     # Keluar dari Menu Pengguna
                     elif pilihan_pengguna == "5":
